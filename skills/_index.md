@@ -1,4 +1,4 @@
-# Capacidades de TPL_Proyecto
+# Capacidades de Prueba-kevin
 
 > **Este archivo lo escribe una máquina.** Se regenera solo cada vez que alguien
 > toca `skills/` o `agentes/`. **No lo edites a mano:** tu cambio se pierde en el
