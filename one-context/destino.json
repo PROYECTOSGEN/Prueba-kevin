@@ -1,0 +1,44 @@
+{
+  "que_es": "Destino de este repositorio en One Context: donde va lo que se desarrolla, se despliega o se guarda desde este proyecto. Lo lee la IA antes de empezar (AGENTS.md, «Antes de empezar: el reporte de One Context»). Las reglas comunes estan en genplus-contexto/00_Empresa/one-context/reglas-comunes.json y quien puede hacer que, en genplus-contexto/00_Empresa/one-context/roles.json.",
+  "schema_version": "1.1",
+  "company": "genplus",
+  "tipo": "proyecto",
+  "area_key": "proyectos",
+  "proyecto_key": "POR_DEFINIR",
+  "nacio_de": "genplus-proyectos-contexto/TPL_Proyecto",
+  "actualizado": "POR_DEFINIR",
+  "entrada": {
+    "indice_maestro": "genplus-proyectos-contexto/00_Empresa",
+    "regla": "Todos pasan primero por el _index.md de 00_Empresa de esta organizacion y desde ahi llegan a la obra que les corresponde. Una obra que cambia de estado se refleja en ese indice."
+  },
+  "github": {
+    "repo": "POR_DEFINIR",
+    "desarrollos": "desarrollos/<slug>/",
+    "equipo_con_acceso": "POR_DEFINIR",
+    "estado": "POR_DEFINIR"
+  },
+  "vercel": {
+    "nuevo": {
+      "estado": "POR_DEFINIR",
+      "cuenta": "TeamDev's projects (Pro)",
+      "team_slug": "teamdevs-projects",
+      "team_id": "team_GOaUvydu36kHDUXpofg6OlxR"
+    }
+  },
+  "drive": {
+    "provider": "google_drive",
+    "estado": "POR_MAPEAR",
+    "storage_scope": {
+      "kind": "shared_drive_or_folder",
+      "drive_id": null,
+      "root_folder_id": "POR_MAPEAR",
+      "folder_name": "POR_MAPEAR"
+    },
+    "nota": "La carpeta raiz del proyecto dentro de 07 Gen+ Projects. La subcarpeta exacta la confirma la persona: no se elige por el nombre."
+  },
+  "policy": {
+    "visibilidad_del_repositorio": "private",
+    "vercel_enlace_local": "La carpeta .vercel es de cada maquina y no se sube; esta en el .gitignore. Para desplegar a mano un proyecto conectado al repo se usa `vercel link --repo` desde la raiz, en el equipo que dice este destino. Si el comando ofrece crear un proyecto nuevo, detente y pregunta.",
+    "seleccion_de_subcarpeta": "La IA no elige una subcarpeta de Drive por su nombre: muestra la raiz y le pide a la persona la subcarpeta exacta."
+  }
+}

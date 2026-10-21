@@ -1,0 +1,14 @@
+# El enlace de Vercel es de cada maquina y no se sube (ver AGENTS.md, «Antes de empezar»).
+.vercel
+
+# Las COPIAS DE TRABAJO de cada herramienta: se crean al instalar una capacidad
+# (ver `empresa/one-context/capacidades.md`) y son de tu maquina, no del equipo.
+# Si se subieran, el mismo criterio quedaria versionado dos veces y la copia
+# envejeceria en silencio.
+.claude/*
+.codex/
+.agents/
+
+# La excepcion: el enganche del freno de estructura SI se versiona, porque es
+# lo que hace que corra solo al clonar. Ver `one-context/frenos/README.md`.
+!.claude/settings.json

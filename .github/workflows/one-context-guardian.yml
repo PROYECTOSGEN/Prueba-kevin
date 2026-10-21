@@ -1,0 +1,46 @@
+# One Context · guardián: en cada push revisa que lo que entró esté en su lugar (AGENTS.md de este repositorio).
+# No bloquea: si algo quedó fuera de lugar, el commit queda en rojo y se abre un aviso para quien lo subió.
+# Para revisar todo el repositorio: Actions → «One Context · guardián» → Run workflow.
+name: One Context · guardián
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Revisar lo que entró
+        id: revisar
+        continue-on-error: true
+        env:
+          ANTES: ${{ github.event.before }}
+          COMPLETO: ${{ github.event_name == 'workflow_dispatch' && '--completo' || '' }}
+        run: |
+          python3 .github/one-context/guardian.py --repo "$GITHUB_REPOSITORY" --antes "$ANTES" --despues "$GITHUB_SHA" \
+            --autor "$GITHUB_ACTOR" $COMPLETO > reporte.md
+          status=$?
+          cat reporte.md >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+      - name: Abrir un aviso
+        if: steps.revisar.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "One Context: ${GITHUB_SHA::7} dejó algo fuera de lugar" \
+            --body-file reporte.md
+
+      - name: Marcar el commit en rojo
+        if: steps.revisar.outcome == 'failure'
+        run: exit 1
